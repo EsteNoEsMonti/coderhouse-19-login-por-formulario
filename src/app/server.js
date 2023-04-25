@@ -7,6 +7,8 @@ import { connectDb } from '../database/mongoose.js';
 import { Server } from 'socket.io'
 import { apiRouterMessages } from '../routes/chat.router.js';
 import { messageManager } from '../managers/MessageManager.js';
+import { apiRouterSession } from '../routes/session.router.js';
+import session from '../middlewares/session.js'
 
 await connectDb()
 const app = express()
@@ -32,9 +34,9 @@ io.on('connection', async socket => {
   })
 
   const messages = await messageManager.getAllMessages()
-    // @ts-ignore
-    const messagesForFront = messages.map(m => ({ ...m, fecha: new Date(m.timestamp).toLocaleTimeString() }))
-    io.sockets.emit('updateMessages', messagesForFront)
+  // @ts-ignore
+  const messagesForFront = messages.map(m => ({ ...m, fecha: new Date(m.timestamp).toLocaleTimeString() }))
+  io.sockets.emit('updateMessages', messagesForFront)
 })
 
 // a cada cosa que me llegue le meto el 'io' en la petition
@@ -50,9 +52,12 @@ app.set('view engine', 'handlebars')
 app.use(express.static('./public'))
 app.use(express.json())
 
+app.use(session)
+
 app.use(apiRouterProducts)
 app.use(apiRouterCarts)
 app.use(apiRouterMessages)
+app.use(apiRouterSession)
 
 app.use((error, req, res, next) => {
   switch (error.message) {

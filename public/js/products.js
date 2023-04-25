@@ -1,6 +1,27 @@
 // @ts-ignore
 const socket = io()
 
+// log out
+const formLogout = document.querySelector('#formLogout')
+
+if (formLogout instanceof HTMLFormElement) {
+  formLogout.addEventListener('submit', async event => {
+    event.preventDefault()
+
+    const { status } = await fetch('/sessions', {
+      method: 'DELETE'
+    })
+
+    if (status === 200) {
+      window.location.href = '/login'
+    } else {
+      console.log('[logout] estado inesperado: ' + status)
+    }
+
+  })
+}
+
+// add product
 const form_addProduct = document.querySelector('#form_addProduct')
 
 if (form_addProduct instanceof HTMLFormElement) {
@@ -20,6 +41,7 @@ if (form_addProduct instanceof HTMLFormElement) {
     })
 }
 
+// @ts-ignore
 const templateRealTimeProducts = Handlebars.compile(`
 {{#if hasDocs }}
     {{#each docs}}

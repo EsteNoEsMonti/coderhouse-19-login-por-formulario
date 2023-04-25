@@ -7,6 +7,8 @@ import { removeProductFromCartController, removeProductsFromCartController } fro
 import { cartManager, cartsModel } from '../managers/CartManager.js'
 import { updateProductsFromCartController } from '../controllers/cart.put.controller.js'
 import util from 'node:util'
+import { onlyAuthenticated } from '../middlewares/autenticacionWeb.js'
+
 
 export const apiRouterCarts = Router()
 
@@ -26,7 +28,7 @@ apiRouterCarts.post("/carts", async (req, res, next) => {
 })
 
 // apiRouterCarts.get('/carts/:cid', getCartByIdController)
-apiRouterCarts.get('/carts/:cid', async (req, res, next) => {
+apiRouterCarts.get('/carts/:cid', onlyAuthenticated, async (req, res, next) => {
   // try {
   //     const cart = await cartsModel.findById(req.params.cid).populate('products.product');
   //     res.json(cart);
@@ -42,9 +44,9 @@ apiRouterCarts.get('/carts/:cid', async (req, res, next) => {
     // }).lean()
     console.log('cart -> ', cart)
 
-      const populateString = util.inspect(cart, false, 10)
-      console.log('populateString -> ', populateString)
-      console.log('populateString typeof -> ', typeof populateString)
+    const populateString = util.inspect(cart, false, 10)
+    console.log('populateString -> ', populateString)
+    console.log('populateString typeof -> ', typeof populateString)
 
     // //   const populateCart = JSON.parse(populateString)
     //   const populateCart = eval(`(${populateString})`)
@@ -61,12 +63,12 @@ apiRouterCarts.get('/carts/:cid', async (req, res, next) => {
 });
 
 
-apiRouterCarts.get('/carts/:cid/product/:pid', getAddProductToCartController)
+apiRouterCarts.get('/carts/:cid/product/:pid', onlyAuthenticated, getAddProductToCartController)
 
-apiRouterCarts.delete('/carts/:cid', removeProductsFromCartController)
+apiRouterCarts.delete('/carts/:cid', onlyAuthenticated, removeProductsFromCartController)
 apiRouterCarts.delete('/carts/:cid/product/:pid', removeProductFromCartController)
 
-apiRouterCarts.put("/carts/:cid", updateProductsFromCartController);
+apiRouterCarts.put("/carts/:cid", onlyAuthenticated, updateProductsFromCartController);
 apiRouterCarts.put("/:cid/product/:pid",);
 
 // old, delete? ---------------------------------------------------------------------------- xxxxxxxxx

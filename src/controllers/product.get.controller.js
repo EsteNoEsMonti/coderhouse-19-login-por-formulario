@@ -38,7 +38,8 @@ export async function getAllProductsController(req, res, next) {
       prevPage: result.prevPage,
       pagingCounter: result.pagingCounter,
       nextLink: createUrlNextPage(result.hasNextPage, result.nextPage, req.url),
-      prevLink: createUrlPrevPage(result.hasPrevPage, result.prevPage, req.url)
+      prevLink: createUrlPrevPage(result.hasPrevPage, result.prevPage, req.url),
+      user: req.session['user']
     }
 
     const products = await productManager.getAllProducts();

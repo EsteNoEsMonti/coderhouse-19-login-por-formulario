@@ -4,6 +4,7 @@ import { postCreateProductController } from '../controllers/product.post.control
 import { getAllProductsController, getProductByIdController } from '../controllers/product.get.controller.js'
 import { deleteProduct } from '../controllers/product.delete.controller.js'
 import { putProduct } from '../controllers/product.put.controller.js'
+import { onlyAuthenticated } from '../middlewares/autenticacionWeb.js'
 
 export const apiRouterProducts = Router()
 
@@ -12,8 +13,8 @@ apiRouterProducts.use(express.urlencoded({ extended: true }))
 
 export const productManagerOld = new FileManager('./database/products.json')
 
-apiRouterProducts.get('/products', getAllProductsController)
-apiRouterProducts.get('/products/:pid', getProductByIdController)
+apiRouterProducts.get('/products', onlyAuthenticated, getAllProductsController)
+apiRouterProducts.get('/products/:pid', onlyAuthenticated, getProductByIdController)
 
 apiRouterProducts.post('/products', postCreateProductController)
 
