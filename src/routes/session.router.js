@@ -51,29 +51,41 @@ apiRouterSession.post('/users', async function (req, res, next) {
   }
 
   res.status(201).json(userCreated)
-  
+
 })
 
 
 apiRouterSession.post('/sessions', async function (req, res, next) {
 
-  const userFinded = await userModel.findOne({ email: req.body.email }).lean()
-  if (!userFinded) return res.sendStatus(401)
+  if (req.body.email == 'adminCoder@coder.com' && req.body.password == 'adminCod3r123') {
+    // @ts-ignore
+    req.session.user = {
+      name: 'Coder Admin 😎',
+      email: 'adminCoder@coder.com',
+      age: '🤐',
+      role: 'admin'
+    }
+    // @ts-ignore
+    res.status(201).json(req.session.user)
+  } else {
+    const userFinded = await userModel.findOne({ email: req.body.email }).lean()
+    if (!userFinded) return res.sendStatus(401)
 
-  if (userFinded.password !== req.body.password) {
-    return res.sendStatus(401)
+    if (userFinded.password !== req.body.password) {
+      return res.sendStatus(401)
+    }
+
+    // @ts-ignore
+    req.session.user = {
+      name: userFinded.firstName + ' ' + userFinded.lastName,
+      email: userFinded.email,
+      age: userFinded.age,
+      role: userFinded.role
+    }
+
+    // @ts-ignore
+    res.status(201).json(req.session.user)
   }
-
-  // @ts-ignore
-  req.session.user = {
-    name: userFinded.firstName + ' ' + userFinded.lastName,
-    email: userFinded.email,
-    age: userFinded.age,
-    role: userFinded.role
-  }
-
-  // @ts-ignore
-  res.status(201).json(req.session.user)
 })
 
 apiRouterSession.delete('/sessions', deleteSessionController)

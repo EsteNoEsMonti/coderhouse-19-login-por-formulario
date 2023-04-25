@@ -1,22 +1,3 @@
-// const formLogin = document.querySelector('#formLogin')
-
-// if (formLogin instanceof HTMLFormElement) {
-//     formLogin.addEventListener('submit', event => {
-//         event.preventDefault()
-//         const formData = new FormData(formLogin)
-//         const data = {}
-//         formData.forEach((value, key) => (data[key] = value));
-
-//         fetch('/login', {
-//             method: 'POST',
-//             body: JSON.stringify(data),
-//             headers: {
-//                 "Content-Type": "application/json"
-//             }
-//         }).finally(() => window.location.href = '/products')
-//     })
-// }
-
 const formLogin = document.querySelector('#formLogin')
 
 if (formLogin instanceof HTMLFormElement) {
