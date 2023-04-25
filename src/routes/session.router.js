@@ -1,5 +1,6 @@
 import express, { Router } from 'express'
 import { userModel } from '../managers/UserManager.js';
+import { deleteSessionController } from '../controllers/session.delete.controler.js';
 
 export const apiRouterSession = Router()
 
@@ -17,8 +18,6 @@ apiRouterSession.get('/login', function (req, res) {
 
 apiRouterSession.post('/login', async function (req, res) {
   try {
-    const result = await req.body
-    console.log('redirect >>>>> (desde public JS)')
     res.redirect('/register')
   } catch (error) {
     console.log(error)
@@ -48,6 +47,7 @@ apiRouterSession.post('/users', async function (req, res, next) {
     name: userCreated.firstName + ' ' + userCreated.lastName,
     email: userCreated.email,
     age: userCreated.age,
+    role: userCreated.role
   }
 
   res.status(201).json(userCreated)
@@ -56,8 +56,6 @@ apiRouterSession.post('/users', async function (req, res, next) {
 
 
 apiRouterSession.post('/sessions', async function (req, res, next) {
-  console.log('req.body -> ', req.body)
-  console.log('req.session -> ', req.session)
 
   const userFinded = await userModel.findOne({ email: req.body.email }).lean()
   if (!userFinded) return res.sendStatus(401)
@@ -71,17 +69,14 @@ apiRouterSession.post('/sessions', async function (req, res, next) {
     name: userFinded.firstName + ' ' + userFinded.lastName,
     email: userFinded.email,
     age: userFinded.age,
+    role: userFinded.role
   }
 
   // @ts-ignore
   res.status(201).json(req.session.user)
 })
 
-apiRouterSession.delete('/sessions', async function (req, res, next) {
-  req.session.destroy(err => {
-    res.sendStatus(200)
-  })
-})
+apiRouterSession.delete('/sessions', deleteSessionController)
 
 
 
