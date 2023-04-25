@@ -1,0 +1,42 @@
+[
+  {
+    "id": "f18df687-c618-4c5b-8464-174715f8a6fe",
+    "title": "Test Product 1 😀",
+    "description": "This is a generic description",
+    "code": "AAA-111",
+    "price": 200,
+    "status": true,
+    "stock": 20,
+    "category": "category 1"
+  },
+  {
+    "id": "b326908d-961e-4a2f-bfce-de9f16cb8118",
+    "title": "Test Product 2 😋",
+    "description": "This is a generic description",
+    "code": "AAA-222",
+    "price": 300,
+    "status": true,
+    "stock": 20,
+    "category": "category 2"
+  },
+  {
+    "id": "6725f8f0-fc08-416e-ac54-de6f8b8de120",
+    "title": "Test Product 3 😎",
+    "description": "This is a generic description",
+    "code": "AAA333",
+    "price": 300,
+    "status": true,
+    "stock": 20,
+    "category": "category 3"
+  },
+  {
+    "id": "0d651e04-6f2b-4d85-a67d-66ac3b5b9259",
+    "title": "Test Product 4 😮",
+    "description": "product to update",
+    "code": "BAD CODE ABC",
+    "price": 300,
+    "status": false,
+    "stock": 20,
+    "category": "category 2"
+  }
+]

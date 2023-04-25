@@ -1,0 +1,63 @@
+<h1>realTimeProducts</h1>
+
+<h3>Add new Product</h3>
+<form id="form_addProduct">
+  <label for="title">title</label><input id="inputTitle" name="title" type="text"><br />
+  <label for="description">description</label><input id="inputDescription" name="description" type="text"><br />
+  <label for="code">code</label><input id="inputCode" name="code" type="text"><br />
+  <label for="price">price</label><input id="inputPrice" name="price" type="text"><br />
+  <label for="status">status</label><input id="inputStatus" name="status" type="text"><br />
+  <label for="stock">stock</label><input id="inputStock" name="stock" type="text"><br />
+  <label for="category">category</label><input id="inputCategory" name="category" type="text"><br />
+  <button id="btnSubmit">Submit</button>
+</form>
+
+{{!-- <h3>delete a product</h3>
+<label for="id">ID:</label><input id="inputId" name="id" type="text"><br />
+<button id="btnDelete">Delete</button> --}}
+
+<h2>Products List:</h2>
+<div id="productsList">
+  {{#if hasDocs}}
+  <ul>
+    {{#each docs}}
+    <li><b>_id:</b> {{this._id}}</li>
+    <li><b>id:</b> {{this.id}}</li>
+    <li><b>title:</b> {{this.title}}</li>
+    <li><b>description:</b> {{this.description}}</li>
+    <li><b>code:</b> {{this.code}}</li>
+    <li><b>price:</b> {{this.price}}</li>
+    <li><b>status:</b> {{this.status}}</li>
+    <li><b>stock:</b> {{this.stock}}</li>
+    <li><b>category:</b> {{this.category}}</li>
+    <li><b>product link:</b> <a href="/products/{{this._id}}">product</a></li>
+    <li><b>add to cart: </b> <a href="/carts/643f4ec9e876a7fe02e42fe3/product/{{this._id}}">add to cart</a></li>
+
+    <hr />
+    {{/each}}
+  </ul>
+  {{else}}
+  <p>There aren't Products 😥</p>
+  {{/if}}
+</div>
+
+<div class="pagination">
+  {{#if hasPrevPage}}
+  <a href="{{prevLink}}">⬅ Prev Page</a>
+  {{/if}}
+  |
+  {{!-- TODO: cada link -> pasar un arreglo con pageLinks desde el controller --}}
+  {{#each pageLinks}}
+  <a href="{{this.link}}" {{#if this.active}}class="active" {{/if}}>{{this.page}}</a> |
+  {{/each}}
+  |
+  {{#if hasNextPage}}
+  <a href="{{nextLink}}">➡ Next Page</a>
+  {{/if}}
+</div>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"
+  integrity="sha512-RNLkV3d+aLtfcpEyFG8jRbnWHxUqVZozacROI4J2F1sTaDqo1dPQYs01OMi1t1w9Y2FdbSCDSQ2ZVdAC8bzgAg=="
+  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="/js/products.js"></script>

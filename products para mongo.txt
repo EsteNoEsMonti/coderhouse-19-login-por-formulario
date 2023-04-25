@@ -1,0 +1,147 @@
+[
+  {
+    "title": "Test Product 1 😀",
+    "description": "This is a generic description",
+    "code": "AAA-111",
+    "price": 200,
+    "status": true,
+    "stock": 20,
+    "category": "category 1"
+  },
+  {
+    "title": "Test Product 2 😀",
+    "description": "This is a generic description",
+    "code": "AAA-222",
+    "price": 300,
+    "status": true,
+    "stock": 10,
+    "category": "category 2"
+  },
+  {
+    "title": "Test Product 3 😀",
+    "description": "This is a generic description",
+    "code": "AAA-333",
+    "price": 100,
+    "status": false,
+    "stock": 30,
+    "category": "category 3"
+  },
+  {
+    "title": "Test Product 4 😀",
+    "description": "This is a generic description",
+    "code": "AAA-444",
+    "price": 50,
+    "status": true,
+    "stock": 5,
+    "category": "category 1"
+  },
+  {
+    "title": "Test Product 5 😀",
+    "description": "This is a generic description",
+    "code": "AAA-555",
+    "price": 150,
+    "status": false,
+    "stock": 15,
+    "category": "category 2"
+  },
+  {
+    "title": "Test Product 6 😀",
+    "description": "This is a generic description",
+    "code": "AAA-666",
+    "price": 250,
+    "status": true,
+    "stock": 25,
+    "category": "category 3"
+  },
+  {
+    "title": "Test Product 7 😀",
+    "description": "This is a generic description",
+    "code": "AAA-777",
+    "price": 75,
+    "status": false,
+    "stock": 7,
+    "category": "category 1"
+  },
+  {
+    "title": "Test Product 8 😀",
+    "description": "This is a generic description",
+    "code": "AAA-888",
+    "price": 350,
+    "status": true,
+    "stock": 12,
+    "category": "category 2"
+  },
+  {
+    "title": "Test Product 9 😀",
+    "description": "This is a generic description",
+    "code": "AAA-999",
+    "price": 125,
+    "status": false,
+    "stock": 18,
+    "category": "category 3"
+  },
+  {
+    "title": "Test Product 10 😀",
+    "description": "This is a generic description",
+    "code": "AAA-1010",
+    "price": 225,
+    "status": true,
+    "stock": 22,
+    "category": "category 1"
+  },
+  {
+    "title": "Test Product 11 😀",
+    "description": "This is a generic description",
+    "code": "AAA-1111",
+    "price": 90,
+    "status": false,
+    "stock": 9,
+    "category": "category 2"
+  },
+  {
+    "title": "Test Product 12 😀",
+    "description": "This is a generic description",
+    "code": "AAA-111",
+    "price": 200,
+    "status": true,
+    "stock": 20,
+    "category": "category 3"
+  },
+  {
+    "title": "Test Product 13 😀",
+    "description": "This is a generic description",
+    "code": "BBB-222",
+    "price": 100,
+    "status": false,
+    "stock": 10,
+    "category": "category 2"
+  },
+  {
+    "title": "Test Product 14 😀",
+    "description": "This is a generic description",
+    "code": "CCC-333",
+    "price": 150,
+    "status": true,
+    "stock": 15,
+    "category": "category 1"
+  },
+  {
+    "title": "Test Product 15 😀",
+    "description": "This is a generic description",
+    "code": "DDD-444",
+    "price": 50,
+    "status": true,
+    "stock": 5,
+    "category": "category 3"
+  },
+  {
+    "title": "Test Product 16 😀",
+    "description": "This is a generic description",
+    "code": "EEE-555",
+    "price": 300,
+    "status": false,
+    "stock": 25,
+    "category": "category 2"
+  }
+]
+   
